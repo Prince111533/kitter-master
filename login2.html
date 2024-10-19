@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Kitter</title>
+  <meta name="description" content="Login to your Kitter account to access premium pet food services.">
+
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
+  
+</head>
+
+<body>
+
+  <!-- Header -->
+  
+    <header class="header" data-header style="background-color: orangered;">
+        <div class="container">
+            <button class="nav-toggle-btn" aria-label="Toggle menu" data-nav-toggler>
+                <ion-icon name="menu-outline" aria-hidden="true" class="menu-icon"></ion-icon>
+                <ion-icon name="close-outline" aria-label="Close" class="close-icon"></ion-icon>
+            </button>
+
+            <a href="#home" class="logo">Kitter</a>
+
+            <nav class="navbar" data-navbar>
+                <ul class="navbar-list">
+                    <li class="navbar-item"><a href="index.html" class="navbar-link" data-nav-link>Home</a></li>
+                    <li class="navbar-item"><a href="shop.html" class="navbar-link" data-nav-link>Shop</a></li>
+                    <li class="navbar-item"><a href="about.html" class="navbar-link" data-nav-link>About</a></li>
+                    <li class="navbar-item"><a href="blog.html" class="navbar-link" data-nav-link>Blogs</a></li>
+                    <li class="navbar-item"><a href="Order food.html" class="navbar-link" data-nav-link>Order</a></li>
+                    <li class="navbar-item"><a href="contact.html" class="navbar-link" data-nav-link>Contact</a></li>
+                </ul>
+                <a href="login2.html" class="navbar-action-btn">Log In</a>
+            </nav>
+
+            <div class="header-actions">
+                <button class="action-btn" aria-label="Search">
+                    <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
+                </button>
+                <button class="action-btn user" aria-label="User">
+                    <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+                </button>
+                <button class="action-btn" aria-label="Cart">
+                    <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+                    
+                </button>
+            </div>
+        </div>
+    </header>
+
+
+
+
+  <main  style="margin: 100px 0px;">
+    <section class="section login" aria-label="login">
+    <div style="max-width: 400px; margin: 50px auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
+        <h2 style="text-align: center; margin-bottom: 20px;">Login to Your Account</h2>
+        
+        <form class="login-form" id="loginForm" action="#" method="POST">
+            <div style="margin-bottom: 15px;">
+                <label for="email" style="display: block; margin-bottom: 5px; font-weight: bold;">Email</label>
+                <input type="email" id="email" name="email" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" required>
+                <span class="error-message" id="emailError" style="font-size: 12px; color: red; display: none;"></span>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label for="password" style="display: block; margin-bottom: 5px; font-weight: bold;">Password</label>
+                <input type="password" id="password" name="password" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" required>
+                <span class="error-message" id="passwordError" style="font-size: 12px; color: red; display: none;"></span>
+            </div>
+
+            <button type="submit" style="width: 100%; padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">Login</button>
+        </form>
+
+        <p style="text-align: center; margin-top: 15px;">
+            Don't have an account? <a href="create.html" style="color: #007bff; text-decoration: none;">Create one</a>
+        </p>
+    </div>
+</section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-top section">
+      <div class="container">
+        <div class="footer-brand">
+          <a href="#" class="logo">Kitter</a>
+          <p class="footer-text">If you have any question, please contact us at <a href="mailto:support@gmail.com" class="link">support@gmail.com</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./assets/js/script.js" defer></script>
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        // Clear previous error messages
+        document.getElementById('emailError').style.display = 'none';
+        document.getElementById('passwordError').style.display = 'none';
+
+        // Get the values of the email and password fields
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        // Regular expression for validating email
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        let isValid = true;
+
+        // Validate email
+        if (!emailPattern.test(email)) {
+            document.getElementById('emailError').textContent = 'Please enter a valid email address.';
+            document.getElementById('emailError').style.display = 'block';
+            isValid = false;
+        }
+
+        // Validate password (example: minimum 6 characters)
+        if (password.length < 6) {
+            document.getElementById('passwordError').textContent = 'Password must be at least 6 characters long.';
+            document.getElementById('passwordError').style.display = 'block';
+            isValid = false;
+        }
+
+        // If validation fails, prevent form submission
+        if (!isValid) {
+            event.preventDefault();
+        }
+    });
+</script>
+</body>
+
+</html>
